@@ -1,4 +1,5 @@
-﻿public static class Solution
+﻿namespace library;
+public static class Solution
 {
     public static int Solve(bool[,] matrix, int i, int j)
     {
@@ -45,8 +46,8 @@
 
                 bool[,] encendidosAhora = CopiarArray(encendidos);
                 Encender(encendidosAhora, i, j, pasito, dirX, dirY);
-                Solver(matrix, newX, newY, encendidosAhora, pasos+1, ref minPasos);
-                
+                Solver(matrix, newX, newY, encendidosAhora, pasos + 1, ref minPasos);
+
             }
         }
     }
@@ -57,7 +58,7 @@
 
         for (int i = 0; i < copia.GetLength(0); i++)
         {
-            for(int j = 0; j < copia.GetLength(1); j++)
+            for (int j = 0; j < copia.GetLength(1); j++)
             {
                 if (encendidos[i, j])
                 {
@@ -76,11 +77,11 @@
             int newX = i + dirX * p;
             int newY = j + dirY * p;
 
-            if(IsInBorders(encendidos, newX, newY))
+            if (IsInBorders(encendidos, newX, newY))
             {
                 encendidos[newX, newY] = true;
             }
-            
+
         }
 
     }
@@ -89,11 +90,11 @@
     {
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
-            for(int j = 0; j < matrix.GetLength(1);j++)
+            for (int j = 0; j < matrix.GetLength(1); j++)
             {
-                if(matrix[i,j] == true)
+                if (matrix[i, j] == true)
                 {
-                    encendidos[i,j] = true;
+                    encendidos[i, j] = true;
                 }
             }
         }
@@ -103,9 +104,9 @@
     {
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
-            for(int j = 0; j < matrix.GetLength(1); j++)
+            for (int j = 0; j < matrix.GetLength(1); j++)
             {
-                if(matrix[i,j] == false) return false;  
+                if (matrix[i, j] == false) return false;
             }
         }
 
@@ -113,11 +114,11 @@
     }
 
     public static bool IsInBorders(bool[,] matrix, int i, int j)
-    { 
+    {
         int largo = matrix.GetLength(0);
         int ancho = matrix.GetLength(1);
 
-        return i>=0 && j>=0 && i<largo && j<ancho;
+        return i >= 0 && j >= 0 && i < largo && j < ancho;
     }
 
 }
